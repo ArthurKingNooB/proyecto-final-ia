@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Prompts con Gemini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Entretejiendo Imaginación y Algoritmos</h1>
+  <p>Generador automático de prompts usando Gemini (texto-texto).</p>
+
+  <form id="promptForm">
+    <label>Producto o servicio:</label>
+    <input type="text" id="producto" required><br><br>
+
+    <label>Descripción corta:</label>
+    <input type="text" id="descripcion" required><br><br>
+
+    
+    <button type="submit">Generar con Gemini</button>
+</form>
+<div id="loading" style="display:none; color:blue;">✨ Procesando con Gemini...</div>
+
+  <h2>Prompt generado</h2>
+  <pre id="output"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
