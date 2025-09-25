@@ -1,43 +1,299 @@
+/* style.css */
+
+/* Variables CSS para colores y fuentes */
+:root {
+    --primary-color: #4A4E69; /* Azul oscuro suave */
+    --secondary-color: #9A8C98; /* Morado grisáceo */
+    --accent-color: #C9ADA7; /* Rosa pálido */
+    --light-color: #F2E9E4; /* Beige muy claro */
+    --dark-text: #22223B; /* Casi negro */
+    --light-text: #F8F8F8; /* Blanco roto */
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Reset básico y estilos generales */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #f9f9f9;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--light-color);
+    scroll-behavior: smooth;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-form {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-label {
-  font-weight: bold;
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.8rem; }
+
+p {
+    margin-bottom: 1rem;
 }
 
-button {
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  background: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#output {
-  background: #eee;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background 0.5s ease;
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#output.updated {
-  background: #d4edda; /* verde suave */
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+.primary-btn:hover {
+    background-color: #373A50; /* Un poco más oscuro */
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+}
+
+.secondary-btn:hover {
+    background-color: #7d6c7b; /* Un poco más oscuro */
+    transform: translateY(-2px);
+}
+
+/* Estilos del Header Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x900/?fantasy-landscape') no-repeat center center/cover;
+    color: var(--light-text);
+    text-align: center;
+    padding: 8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--light-text); /* Sobrescribe el color para el hero */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Sección del Generador */
+.generator-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--light-color);
+}
+
+.generator-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--dark-text);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+.select-field {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: white;
+    color: var(--dark-text);
+    appearance: none; /* Quita el estilo por defecto de select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234A4E69%22%20d%3D%22M287%20165.7c-4.3%204.3-10.7%206.5-17.1%206.5-6.4%200-12.7-2.2-17.1-6.5L146.2%2072.8%2046.6%20172.4c-4.3%204.3-10.7%206.5-17.1%206.5s-12.7-2.2-17.1-6.5c-9.4-9.4-9.4-24.6%200-33.9L129%2039c9.4-9.4%2024.6-9.4%2033.9%200l110.1%20110.1c9.4%209.4%209.4%2024.6.1%2033.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.65em auto;
+}
+
+.results-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    margin-top: 2rem;
+    text-align: left;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.results-container h3 {
+    text-align: center;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+}
+
+.idea-text {
+    background-color: var(--light-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    font-style: italic;
+    color: var(--dark-text);
+    transition: all 0.5s ease-in-out;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.idea-text p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+.idea-image {
+    text-align: center;
+    min-height: 300px; /* Espacio para la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    overflow: hidden; /* Asegura que la imagen no se desborde */
+}
+
+.idea-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: none; /* Se mostrará con JS */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+/* Sección "Cómo Funciona" */
+.how-it-works-section {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.how-it-works-section h2 {
+    color: var(--light-text);
+    margin-bottom: 2.5rem;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.step-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.step-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--light-text);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .select-field, .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    .hero {
+        padding: 6rem 1rem;
+    }
+    .container {
+        padding: 1.5rem;
+    }
+    .results-container {
+        padding: 1.5rem;
+    }
+    .idea-text {
+        padding: 1rem;
+    }
 }
