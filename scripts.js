@@ -114,6 +114,55 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("No hay ideas disponibles para este tipo.");
         }
         return simulatedGeminiResponses[type][index];
+         const prompt = `Genera una ilustración fantástica de un ${type}, estilo digital art, detallado.`;
+
+    const response = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=" + GEMINI_API_KEY,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                contents: [
+                    {
+                        parts: [{ text: prompt }]
+                    }
+                ],
+                generationConfig: {
+                    responseModalities: ["TEXT", "IMAGE"] // 👈 esto pide imagen también
+                }
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (data.error) {
+        throw new Error(data.error.message);
+    }
+
+    // Buscar la parte de la respuesta que contiene imagen
+    let imageBase64 = null;
+    let description = "";
+
+    for (const part of data.candidates[0].content.parts) {
+        if (part.text) {
+            description += part.text;
+        }
+        if (part.inlineData) {
+            imageBase64 = part.inlineData.data; // viene en base64
+        }
+    }
+
+    if (!imageBase64) {
+        throw new Error("No se recibió imagen de Gemini");
+    }
+
+    return {
+        text: description || "Imagen generada por Gemini",
+        imageUrl: "data:image/png;base64," + imageBase64
+    };
     }
 
     /**
